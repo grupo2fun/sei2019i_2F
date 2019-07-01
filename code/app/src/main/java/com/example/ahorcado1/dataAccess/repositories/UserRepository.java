@@ -8,6 +8,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserRepository {
     Dao<User,Long> userDao ;
@@ -43,6 +44,14 @@ public class UserRepository {
         }
         return new User();
     }
-
+    public User getByUsername(String username){
+        try {
+            List<User> users = userDao.query(userDao.queryBuilder().where().eq("username",username).prepare());
+            return users.get(0);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new User();
+    }
 
 }
