@@ -10,7 +10,7 @@ public class User {
 
     @DatabaseField(canBeNull = false)
     private String completeName;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false,unique = true)
     private String username;
     @DatabaseField(canBeNull = false)
     private String password;
