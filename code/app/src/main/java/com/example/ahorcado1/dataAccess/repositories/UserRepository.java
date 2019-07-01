@@ -1,4 +1,48 @@
 package com.example.ahorcado1.dataAccess.repositories;
 
+
+
+import com.example.ahorcado1.dataAccess.models.User;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.support.ConnectionSource;
+
+import java.sql.SQLException;
+
 public class UserRepository {
+    Dao<User,Long> userDao ;
+    public UserRepository(ConnectionSource connection){
+        try {
+            userDao = DaoManager.createDao(connection, User.class);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public User create(User user){
+        try {
+            userDao.create(user);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+    public User update(User user){
+        try {
+            userDao.update(user);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+    public User getById(long id){
+        try {
+            return userDao.queryForId(id);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new User();
+    }
+
+
 }
