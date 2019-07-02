@@ -1,4 +1,4 @@
-package com.example.ahorcado1.DataAccess.models;
+package com.example.ahorcado1.dataAccess.models;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -17,7 +17,9 @@ public class User {
     @DatabaseField(canBeNull = false)
     private int puntaje;
 
-    public User(){}
+    public User(){
+        this.id = -1;
+    }
 
     public User(String completeName,String username,String password){
         this.setCompleteName(completeName);

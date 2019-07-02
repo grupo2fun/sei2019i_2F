@@ -1,8 +1,8 @@
-package com.example.ahorcado1.DataAccess.repositories;
+package com.example.ahorcado1.dataAccess.repositories;
 
 
 
-import com.example.ahorcado1.DataAccess.models.User;
+import com.example.ahorcado1.dataAccess.models.User;
 //import com.example.ahorcado1.dataAccess.models.User;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -48,7 +48,8 @@ public class UserRepository {
     public User getByUsername(String username){
         try {
             List<User> users = userDao.query(userDao.queryBuilder().where().eq("username",username).prepare());
-            return users.get(0);
+            if (users.size()==0) return new User();
+            else return users.get(0);
         }catch(SQLException e){
             e.printStackTrace();
         }
