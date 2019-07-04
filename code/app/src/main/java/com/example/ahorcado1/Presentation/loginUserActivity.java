@@ -1,4 +1,4 @@
-package com.example.ahorcado1;
+package com.example.ahorcado1.Presentation;
 
 import android.content.Intent;
 import android.os.StrictMode;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.ahorcado1.BusinessLogic.controllers.loginController;
 import com.example.ahorcado1.DataAccess.database.Database;
+import com.example.ahorcado1.R;
 
 public class loginUserActivity extends AppCompatActivity {
     EditText e1,e2;

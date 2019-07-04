@@ -1,4 +1,4 @@
-package com.example.ahorcado1;
+package com.example.ahorcado1.Presentation;
 
 import android.content.Intent;
 import android.os.StrictMode;
@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ahorcado1.BusinessLogic.controllers.loginController;
 import com.example.ahorcado1.BusinessLogic.controllers.registerController;
 import com.example.ahorcado1.DataAccess.database.Database;
+import com.example.ahorcado1.R;
 
 public class registerUserActivity extends AppCompatActivity {
 
