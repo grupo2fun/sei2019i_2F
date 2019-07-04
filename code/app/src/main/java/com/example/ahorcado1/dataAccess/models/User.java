@@ -17,7 +17,9 @@ public class User {
     @DatabaseField(canBeNull = false)
     private int puntaje;
 
-    public User(){}
+    public User(){
+        this.id = -1;
+    }
 
     public User(String completeName,String username,String password){
         this.setCompleteName(completeName);
