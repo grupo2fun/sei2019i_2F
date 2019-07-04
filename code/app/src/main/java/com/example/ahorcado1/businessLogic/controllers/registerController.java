@@ -4,12 +4,14 @@ import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import com.j256.ormlite.support.ConnectionSource;
 
-public class registrerController {
+public class registerController {
     public ConnectionSource connection;
-    public registrerController( ConnectionSource connection){
+
+    public registerController(ConnectionSource connection){
         this.connection= connection;
     }
-    public boolean registrer(String name,String username,String password){//devuelve un booleano
+
+    public boolean register (String name,String username,String password){//devuelve un booleano
         UserRepository userRepository= new UserRepository(connection);
         User user1 = userRepository.getByUsername(username);
         if(user1.getId()==-1){
