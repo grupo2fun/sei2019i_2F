@@ -1,8 +1,8 @@
 package com.example.ahorcado1;
 import android.util.Log;
 
-import com.example.ahorcado1.dataAccess.models.User;
-import com.example.ahorcado1.dataAccess.repositories.UserRepository;
+import com.example.ahorcado1.DataAccess.models.User;
+import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class loginController {

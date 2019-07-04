@@ -1,7 +1,7 @@
-package com.example.ahorcado1.businessLogic.controllers;
+package com.example.ahorcado1.BusinessLogic.controllers;
 
-import com.example.ahorcado1.dataAccess.models.User;
-import com.example.ahorcado1.dataAccess.repositories.UserRepository;
+import com.example.ahorcado1.DataAccess.models.User;
+import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class registrerController {

@@ -1,7 +1,7 @@
-package com.example.ahorcado1.dataAccess.database;
+package com.example.ahorcado1.DataAccess.database;
 
 
-import com.example.ahorcado1.dataAccess.models.User;
+import com.example.ahorcado1.DataAccess.models.User;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ahorcado1.dataAccess.database.Database;
+import com.example.ahorcado1.DataAccess.database.Database;
 
 public class loginUserActivity extends AppCompatActivity {
     EditText e1,e2;

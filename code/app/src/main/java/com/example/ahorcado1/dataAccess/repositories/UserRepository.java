@@ -1,8 +1,8 @@
-package com.example.ahorcado1.dataAccess.repositories;
+package com.example.ahorcado1.DataAccess.repositories;
 
 
 
-import com.example.ahorcado1.dataAccess.models.User;
+import com.example.ahorcado1.DataAccess.models.User;
 //import com.example.ahorcado1.dataAccess.models.User;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
