@@ -48,7 +48,8 @@ public class UserRepository {
     public User getByUsername(String username){
         try {
             List<User> users = userDao.query(userDao.queryBuilder().where().eq("username",username).prepare());
-            return users.get(0);
+            if (users.size()==0) return new User();
+            else return users.get(0);
         }catch(SQLException e){
             e.printStackTrace();
         }
