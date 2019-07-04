@@ -26,7 +26,9 @@ public class loginUserActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         //Instancia de Base de Datos
         Database database = new Database();
-        final loginController loginController1= new loginController(database.connection);
+        ((Database) this.getApplication()).setConnection(database.connection);
+
+        final loginController loginController1 = new loginController(database.connection);
 
         e1=(EditText)findViewById(R.id.userName);
         e2=(EditText)findViewById(R.id.Lpassword);

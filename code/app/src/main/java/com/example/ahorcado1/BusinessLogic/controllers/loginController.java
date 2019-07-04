@@ -1,5 +1,5 @@
 package com.example.ahorcado1.BusinessLogic.controllers;
-import android.util.Log;
+
 
 import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
@@ -15,7 +15,7 @@ public class loginController {
     public User loginUser (String user, String Password){
         UserRepository userRepository = new UserRepository(connection);
 
-        User user1= userRepository.getByUsername(user);
+        User user1 = userRepository.getByUsername(user);
 
         if(user1.getId()==-1){
             return new User();
