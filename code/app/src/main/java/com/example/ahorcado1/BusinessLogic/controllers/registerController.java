@@ -5,6 +5,7 @@ import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class registerController {
+
     public ConnectionSource connection;
 
     public registerController(ConnectionSource connection){

@@ -23,13 +23,10 @@ public class registerUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
         //For network connections in main thread
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        //Instancia de Base de Datos
-        Database database = new Database();
-        final registerController registerController1 = new registerController(database.connection);
 
-        e1 = (EditText) findViewById(R.id.userName);
+        final registerController registerController1 = new registerController(((Database) this.getApplication()).getConnection());
+
+        e1 = (EditText) findViewById(R.id.userNameText);
         e2 = (EditText) findViewById(R.id.nameUserText);
         e3 = (EditText) findViewById(R.id.passUserText);
         br = (Button) findViewById(R.id.buttonRegister);
@@ -37,6 +34,7 @@ public class registerUserActivity extends AppCompatActivity {
         br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(registerController1.register(e1.getText().toString(), e2.getText().toString(),e3.getText().toString())){
                     Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
                     startActivity(i);
