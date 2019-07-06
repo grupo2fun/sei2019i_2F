@@ -3,17 +3,14 @@ package com.example.ahorcado1.BusinessLogic.controllers;
 
 import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
-import com.j256.ormlite.support.ConnectionSource;
+
 
 public class loginController {
 
-    public ConnectionSource connection;
-    public loginController( ConnectionSource connection){
-        this.connection= connection;
-    }
+    public loginController( ){ }
 
     public User loginUser (String user, String Password){
-        UserRepository userRepository = new UserRepository(connection);
+        UserRepository userRepository = Globals.userRepository;
 
         User user1 = userRepository.getByUsername(user);
 

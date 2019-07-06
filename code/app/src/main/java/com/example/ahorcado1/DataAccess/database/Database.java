@@ -1,8 +1,7 @@
 package com.example.ahorcado1.DataAccess.database;
 
 
-import android.app.Application;
-
+import com.example.ahorcado1.BusinessLogic.controllers.Globals;
 import com.example.ahorcado1.DataAccess.models.User;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
@@ -10,8 +9,8 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
-public class Database extends Application {
-    private static final String HOST = "jdbc:mysql://192.168.43.85:3306/";        //Direccion ip de la base
+public class Database {
+    private static final String HOST = "jdbc:mysql://192.168.0.9:3306/";        //Direccion ip de la base
     private static final String DB_NAME = "db_hangman";
     private static final String CONNECTION = HOST + DB_NAME;
     private static final String USER = "hangManUser";
@@ -24,14 +23,9 @@ public class Database extends Application {
             //Instancias por cada clase
             TableUtils.createTableIfNotExists(connection, User.class);
             //TableUtils.createTableIfNotExists(connection, Rol.class);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    public ConnectionSource getConnection() {
-        return connection;
-    }
-    public ConnectionSource setConnection(ConnectionSource conecction) {
-        return connection = conecction;
     }
 }

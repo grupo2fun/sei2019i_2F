@@ -16,6 +16,8 @@ public class User {
     private String password;
     @DatabaseField(canBeNull = false)
     private int puntaje;
+    //@DatabaseField(foreign = true) Asi se trabajan con llaves foraneas, usuario no tiene pero partida si debe tener de llave foranea del usuario
+    //private Partida partida;
 
     public User(){
         this.id = -1;

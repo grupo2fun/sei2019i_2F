@@ -1,7 +1,7 @@
 package com.example.ahorcado1.Presentation;
 
 import android.content.Intent;
-import android.os.StrictMode;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ahorcado1.BusinessLogic.controllers.registerController;
-import com.example.ahorcado1.DataAccess.database.Database;
+
 import com.example.ahorcado1.R;
 
 public class registerUserActivity extends AppCompatActivity {
@@ -24,7 +24,7 @@ public class registerUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
         //For network connections in main thread
 
-        final registerController registerController1 = new registerController(((Database) this.getApplication()).getConnection());
+        final registerController registerController1 = new registerController();
 
         e1 = (EditText) findViewById(R.id.userNameText);
         e2 = (EditText) findViewById(R.id.nameUserText);
