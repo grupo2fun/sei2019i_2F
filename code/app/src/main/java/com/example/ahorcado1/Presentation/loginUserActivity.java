@@ -39,7 +39,9 @@ public class loginUserActivity extends AppCompatActivity {
         be.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(loginController1.loginUser(e1.getText().toString(),e2.getText().toString()).getId()!=-1){
+                //Si el id del usuario es diferente de -1
+                if( loginController1.loginUser( e1.getText().toString(),e2.getText().toString() ).getId() != -1 )
+                {
                     Intent i =new Intent(loginUserActivity.this,mainMenuActivity.class);
                     startActivity(i);
                 }else {
@@ -49,9 +51,11 @@ public class loginUserActivity extends AppCompatActivity {
 
         });
 
-        br.setOnClickListener(new View.OnClickListener() {
+        br.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
                 startActivity(i);
             }
