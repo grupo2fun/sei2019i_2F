@@ -9,17 +9,19 @@ public class Round {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField(canBeNull = false)
-    private Long user;
-    @DatabaseField(canBeNull = false)
-    private int category;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private User user;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Category category;
     @DatabaseField(canBeNull = false)
     private Long score;
+
+
 
     public Round() {
     }
 
-    public Round(Long user, int category, Long score) {
+    public Round(User user, Category category, Long score) {
         this.user = user;
         this.category = category;
         this.score = score;
@@ -29,19 +31,19 @@ public class Round {
         return id;
     }
 
-    public Long getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Long user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public int getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

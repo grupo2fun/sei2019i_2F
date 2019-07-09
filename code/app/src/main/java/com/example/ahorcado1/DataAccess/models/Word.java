@@ -8,15 +8,15 @@ public class Word {
 
     @DatabaseField(generatedId = true)
     private Long id;
-    @DatabaseField(canBeNull = false)
-    private int category;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Category category;
     @DatabaseField(canBeNull = false)
     private String word;
-    
+
     public Word() {
     }
 
-    public Word(Long id, int category, String word) {
+    public Word(Long id, Category category, String word) {
         this.id = id;
         this.category = category;
         this.word = word;
@@ -26,11 +26,11 @@ public class Word {
         return id;
     }
 
-    public int getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

@@ -11,4 +11,6 @@ public final class Globals {
     public static User user;
     public static UserRepository userRepository = new UserRepository(database.connection);
 
+
+
 }
