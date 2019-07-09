@@ -1,5 +1,6 @@
 package com.example.ahorcado1.BusinessLogic.controllers;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
@@ -14,7 +15,8 @@ public class gameController {
             }
             return mask;
         }else{
-            return null;
+            Arrays.fill(mask,false);//llena la mascara de false si el intento fue erroneo
+            return mask;
         }
     }
 
