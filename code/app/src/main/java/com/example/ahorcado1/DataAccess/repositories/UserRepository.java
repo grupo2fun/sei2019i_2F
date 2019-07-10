@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserRepository
 {
-    Dao<User,Long> userDao ;
+    Dao<User, Long> userDao;
 
     public UserRepository(ConnectionSource connection)
     {

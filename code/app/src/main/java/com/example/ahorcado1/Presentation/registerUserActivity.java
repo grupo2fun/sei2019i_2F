@@ -26,11 +26,14 @@ public class registerUserActivity extends AppCompatActivity {
 
         final registerController registerController1 = new registerController();
 
+        //Cajas de texto
         e1 = (EditText) findViewById(R.id.userNameText);
         e2 = (EditText) findViewById(R.id.nameUserText);
         e3 = (EditText) findViewById(R.id.passUserText);
+        //Botón registrar
         br = (Button) findViewById(R.id.buttonRegister);
 
+        //Acción del botón "Registrar"
         br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
