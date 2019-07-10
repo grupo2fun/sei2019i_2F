@@ -19,11 +19,12 @@ public class registerUserActivity extends AppCompatActivity {
     Button br;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        //For network connections in main thread
 
+        //Instancia de controlador
         final registerController registerController1 = new registerController();
 
         //Cajas de texto
@@ -38,12 +39,14 @@ public class registerUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(registerController1.register(e1.getText().toString(), e2.getText().toString(),e3.getText().toString())){
+                if( registerController1.register( e1.getText().toString(), e2.getText().toString(),e3.getText().toString() ) )
+                {
                     Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
                     startActivity(i);
-                } else {
+                }else
+                 {
                     Toast.makeText(getApplicationContext(),"El usuario ya se encuentra registrado",Toast.LENGTH_SHORT).show();
-                }
+                 }
             }
         });
     }
