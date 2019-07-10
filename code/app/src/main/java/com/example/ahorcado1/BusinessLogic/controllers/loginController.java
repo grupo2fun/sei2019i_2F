@@ -15,7 +15,8 @@ public class loginController {
 
         User user1 = userRepository.getByUsername(user);
 
-        if(user1.getId()==-1){
+        if(user1.getId() == -1)
+        {
             return new User();
         }
         else if(user1.getPassword().equals(Password)){
