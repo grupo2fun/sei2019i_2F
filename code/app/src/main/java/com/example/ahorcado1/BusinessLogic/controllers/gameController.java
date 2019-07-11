@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
-public class gameController {
+public class gameController
+{
     /*funcion que recibe una letra a adivinar*/
     static public boolean[] guess(String word,boolean[] mask,char letter){
         char[] palabra = word.toCharArray();
@@ -22,7 +23,7 @@ public class gameController {
 
 
     /*funcion que busca  donde se encuentra la letra en la palabra*/
-    private static Stack<Integer> find(char[] word,char letter){
+    public static Stack<Integer> find(char[] word,char letter){
         int P = word.length;
         Stack<Integer> result = new Stack<>();
         for (int i = 0;i<P;i++){

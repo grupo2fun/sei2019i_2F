@@ -28,8 +28,7 @@ public class loginUserActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         //Instancia de Base de Datos
 
-
-
+        //Instancia de controller
         final loginController loginController1 = new loginController();
 
         e1=(EditText)findViewById(R.id.userName);
