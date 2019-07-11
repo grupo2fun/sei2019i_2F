@@ -78,9 +78,7 @@ public class User
         this.id = id;
     }
 
-    public Boolean getAdminOrUser() {
-        return adminOrUser;
-    }
+    public Boolean getAdminOrUser() { return adminOrUser; }
 
     public void setAdminOrUser(Boolean adminOrUser) {
         this.adminOrUser = adminOrUser;

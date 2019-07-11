@@ -35,6 +35,7 @@ public class loginUserActivity extends AppCompatActivity {
         e2=(EditText)findViewById(R.id.Lpassword);
         be=(Button) findViewById(R.id.buttonEntrar);
         br=(Button) findViewById(R.id.buttonRegistro);
+
         be.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
