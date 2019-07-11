@@ -56,18 +56,20 @@ public class roundActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean isTrue = true;
-                for (int i=0; i <= mask.length; i++)
+                for (int i = 0; i <= mask.length; i++)
                 {
-                    if(mask[i]=false){ isTrue=false;break;}
+                    if(mask[i]==false){ isTrue = false; break;}
                     else isTrue = true;
                 }
                 while (isTrue == true)
                 {
                     boolean[] s1 = gameController.guess(palabra, mask, ch);
-                    for (int i=0; i<= s1.length; i++)
+                    //Recorre el  arreglo de booleanos
+                    for (int i = 0; i <= s1.length; i++)
                     {
                         if(s1[i] == true)
                         {
+                            //Actualiza letras que está originalmente en '_' con la letra adivinada
                             letras[i] = letra[i];
                         }
                     }
