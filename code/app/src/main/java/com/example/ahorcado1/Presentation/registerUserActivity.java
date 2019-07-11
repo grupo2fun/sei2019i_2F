@@ -39,7 +39,7 @@ public class registerUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if( registerController1.register( e1.getText().toString(), e2.getText().toString(),e3.getText().toString() ) )
+                if( registerController1.register( e1.getText().toString(), e2.getText().toString(),e3.getText().toString(), false ) )
                 {
                     Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
                     startActivity(i);

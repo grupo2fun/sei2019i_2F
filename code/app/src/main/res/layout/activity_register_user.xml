@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="0.914" />
 
     <EditText
         android:id="@+id/nameUserText"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="44dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textPersonName"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="148dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -70,10 +70,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="144dp"
         android:text="Registrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="107dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:checked="false"
+        android:lineSpacingExtra="10sp"
+        android:showText="true"
+        android:splitTrack="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textOff="User"
+        android:textOn="Admin"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passUserText"
+        app:layout_constraintVertical_bias="0.512"
+        tools:checked="false"
+        tools:visibility="visible" />
 </android.support.constraint.ConstraintLayout>

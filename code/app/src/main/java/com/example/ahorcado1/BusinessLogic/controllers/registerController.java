@@ -9,7 +9,7 @@ public class registerController {
 
     public registerController(){}
 
-    public boolean register (String name,String username,String password) //Devuelve un booleano
+    public boolean register (String name,String username,String password, Boolean adminOrUser) //Devuelve un booleano
     {
         //Instancia única de UserRepository
         UserRepository userRepository = Globals.userRepository;
@@ -19,7 +19,7 @@ public class registerController {
         if(user1.getId()==-1)
         {
             //Instancia de nuevo usuario
-            User user = new User(name, username, password);
+            User user = new User(name, username, password, adminOrUser);
             //Crea el usuario como objeto y lo pasa a la base de datos
             userRepository.create(user);
             return true;//devuelve true si no existe un usuario con ese username y lo añade a la base de datos
