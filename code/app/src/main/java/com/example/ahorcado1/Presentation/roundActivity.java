@@ -22,10 +22,13 @@ public class roundActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round);
 
+        /*recibe la palabra*/
         final String palabra = "actividad";
 
-        TextView impresion = (TextView) findViewById(R.id.impresion);
+        /*convierte la palabra en '_' y la imprime en el TextView*/
+        final TextView impresion = (TextView) findViewById(R.id.impresion);
         final char[] letras = palabra.toCharArray();
+        final char[] letra = palabra.toCharArray();
         for (int i=0; i<=letras.length;i++){
             letras [i]= '_' ;
         }
@@ -35,13 +38,14 @@ public class roundActivity extends AppCompatActivity {
         final boolean[] mask = new boolean[palabra.length()];
         Arrays.fill(mask, Boolean.FALSE);
 
+        /*ingresa la letra*/
         EditText e1;
         e1=(EditText) findViewById(R.id.Tletra);
         final char ch = e1.getText().charAt(0);
         Button IngresrarLetra;
         IngresrarLetra=(Button) findViewById(R.id.BLetra);
 
-        /*imprime la letra cuanto se pincha e boton*/
+        /*imprime la letra cuanto se pincha el boton*/
         IngresrarLetra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +55,14 @@ public class roundActivity extends AppCompatActivity {
                     else isTrue=true;
                 }
                 while (isTrue=true){
-                    gameController.guess(palabra,mask,ch);
-
+                    boolean[] s1=gameController.guess(palabra,mask,ch);
+                    for (int i=0; i<=s1.length;i++){
+                        if(s1[i]=true){
+                            letras[i]=letra[i];
+                        }
+                    }
+                    String Poculta = String.valueOf(letras);
+                    impresion.setText(Poculta);
                 }
             }
         });
