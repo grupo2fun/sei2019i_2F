@@ -4,7 +4,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "User")
-public class User {
+public class User
+{
+    //Generate id --> PK
     @DatabaseField(generatedId = true)
     private long id;
 
@@ -16,18 +18,24 @@ public class User {
     private String password;
     @DatabaseField(canBeNull = false)
     private int puntaje;
-    //@DatabaseField(foreign = true) Asi se trabajan con llaves foraneas, usuario no tiene pero partida si debe tener de llave foranea del usuario
-    //private Partida partida;
+    @DatabaseField(canBeNull = false)
+    private Boolean adminOrUser;
+    //@DatabaseField(foreign = true) //Asi se trabajan con llaves foraneas, usuario no tiene pero partida si debe tener de llave foranea del usuario
+    //private Partida partida; EJEMPLO
 
+    //Constructor de User tiene por defecto id = -1. Si un usario en los controladores tiene id = -1 significa que no exite en la base de datos.
     public User(){
         this.id = -1;
     }
 
-    public User(String completeName,String username,String password){
+    public User(String completeName,String username,String password, Boolean adminOrUser)
+    {
         this.setCompleteName(completeName);
         this.setUsername(username);
         this.setPassword(password);
         this.setPuntaje(0);
+        this.setAdminOrUser(adminOrUser);
+
     }
 
     public String getCompleteName() {
@@ -68,5 +76,13 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Boolean getAdminOrUser() {
+        return adminOrUser;
+    }
+
+    public void setAdminOrUser(Boolean adminOrUser) {
+        this.adminOrUser = adminOrUser;
     }
 }

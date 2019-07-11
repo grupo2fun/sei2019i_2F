@@ -9,15 +9,22 @@ public class registerController {
 
     public registerController(){}
 
-    public boolean register (String name,String username,String password){//devuelve un booleano
+    public boolean register (String name,String username,String password, Boolean adminOrUser) //Devuelve un booleano
+    {
+        //Instancia única de UserRepository
         UserRepository userRepository = Globals.userRepository;
+        //Instancia de usuario a partir del repositorio
         User user1 = userRepository.getByUsername(username);
-        if(user1.getId()==-1){
-            User user = new User(name,username,password);
+
+        if(user1.getId()==-1)
+        {
+            //Instancia de nuevo usuario
+            User user = new User(name, username, password, adminOrUser);
+            //Crea el usuario como objeto y lo pasa a la base de datos
             userRepository.create(user);
-            return true;//devuelve true si no existe un usuario con ese usename y lo añade a la base de datos
+            return true;//devuelve true si no existe un usuario con ese username y lo añade a la base de datos
         }else{
-            return false;//devuelve falso si ya existe un usario con ese username
+            return false;//devuelve falso si ya existe un usuario con ese username
         }
     }
 }
