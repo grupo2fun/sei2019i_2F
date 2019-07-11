@@ -36,13 +36,15 @@ public class loginUserActivity extends AppCompatActivity {
         be=(Button) findViewById(R.id.buttonEntrar);
         br=(Button) findViewById(R.id.buttonRegistro);
 
-        be.setOnClickListener(new View.OnClickListener() {
+        be.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //Si el id del usuario es diferente de -1
                 if( loginController1.loginUser( e1.getText().toString(),e2.getText().toString() ).getId() != -1 )
                 {
-                    Intent i =new Intent(loginUserActivity.this,mainMenuActivity.class);
+                    Intent i =new Intent(loginUserActivity.this, mainMenuActivity.class);
                     startActivity(i);
                 }else {
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();

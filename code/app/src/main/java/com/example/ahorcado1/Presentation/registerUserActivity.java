@@ -28,8 +28,8 @@ public class registerUserActivity extends AppCompatActivity {
         final registerController registerController1 = new registerController();
 
         //Cajas de texto
-        e1 = (EditText) findViewById(R.id.userNameText);
-        e2 = (EditText) findViewById(R.id.nameUserText);
+        e1 = (EditText) findViewById(R.id.nameUserText);
+        e2 = (EditText) findViewById(R.id.nicknameText);
         e3 = (EditText) findViewById(R.id.passUserText);
         //Botón registrar
         br = (Button) findViewById(R.id.buttonRegister);
