@@ -16,8 +16,7 @@ public class Word {
     public Word() {
     }
 
-    public Word(Long id, Category category, String word) {
-        this.id = id;
+    public Word(Category category, String word) {
         this.category = category;
         this.word = word;
     }

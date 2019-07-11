@@ -8,6 +8,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CategoryRepository {
 
@@ -43,6 +44,19 @@ public class CategoryRepository {
         try {
             return categoryDao.queryForId(id);
         }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new Category();
+    }
+
+    public Category getByName(String name){
+        try
+        {
+            List<Category> categories = categoryDao.query(categoryDao.queryBuilder().where().eq("name",name).prepare());
+            if (categories.size()==0) return new Category();
+            else return categories.get(0);
+        }catch(SQLException e)
+        {
             e.printStackTrace();
         }
         return new Category();
