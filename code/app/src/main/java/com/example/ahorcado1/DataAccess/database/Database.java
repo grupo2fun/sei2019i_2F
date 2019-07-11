@@ -21,6 +21,7 @@ public class Database {
         try {
             connection = new JdbcConnectionSource(CONNECTION, USER, PASS);
             //Instancias por cada clase
+
             TableUtils.createTableIfNotExists(connection, User.class);
             //TableUtils.createTableIfNotExists(connection, Rol.class);
 
