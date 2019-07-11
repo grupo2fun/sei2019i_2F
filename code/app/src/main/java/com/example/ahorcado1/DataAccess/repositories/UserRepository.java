@@ -43,6 +43,7 @@ public class UserRepository
             userDao.update(user);
         }catch(SQLException e){
             e.printStackTrace();
+            return new User();
         }
         return user;
     }

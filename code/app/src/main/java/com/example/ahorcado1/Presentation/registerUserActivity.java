@@ -44,9 +44,9 @@ public class registerUserActivity extends AppCompatActivity {
                     Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
                     startActivity(i);
                 }else
-                 {
+                {
                     Toast.makeText(getApplicationContext(),"El usuario ya se encuentra registrado",Toast.LENGTH_SHORT).show();
-                 }
+                }
             }
         });
     }
