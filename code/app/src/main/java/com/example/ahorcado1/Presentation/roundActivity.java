@@ -29,6 +29,7 @@ public class roundActivity extends AppCompatActivity {
     ImageView hang ;
     boolean[] mask = new  boolean[0];
     Stack<Character> usedLetters = new Stack<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +38,22 @@ public class roundActivity extends AppCompatActivity {
         /*palabra a adivinar*/
         hang = findViewById(R.id.hangmanView);
         usedL = findViewById(R.id.usedletText);
+
         lives = 6;//vidas
         hints = 1;//pistas
-        final String word = "actividad";
+
+        final String word = "actividad"; //Palabra a jugar
+
         palabra = findViewById(R.id.Palabra);
         palabra.setText("_ _ _ _ _ _ _ _ _");
+
         final char[] wordc = word.toCharArray();
         final boolean[] maskTrue = new boolean[wordc.length];
         Arrays.fill(maskTrue,true);
+
         mask = new boolean[wordc.length];
         Arrays.fill(mask,false);
+
         final boolean[] maskFalse = mask;
 
 
@@ -56,7 +63,8 @@ public class roundActivity extends AppCompatActivity {
         CharSequence texth = "Solo 1 pista por palabra";
         CharSequence textv = "ya se adivino la palabra";
         CharSequence textd = "ya no teine mas vidas";
-        int duration = Toast.LENGTH_SHORT;
+        //?????
+        int duration = Toast.LENGTH_SHORT; //Duración del mensaje
         final Toast toastHint = Toast.makeText(context, texth, duration);
         final Toast toastV = Toast.makeText(context, textv, duration);
         final Toast toastD = Toast.makeText(context, textd, duration);
@@ -70,33 +78,41 @@ public class roundActivity extends AppCompatActivity {
         /*accion boto de advinar*/
         bGuess.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(lives<=0){
+            public void onClick(View v)
+            {
+                if(lives <= 0)
+                {
                     toastD.show();
-                }else if (areAllTrue(mask)){
+                }else if (areAllTrue(mask))
+                {
                     toastV.show();
-                } else {
-                    char letra = Tletra.getText().toString().charAt(0);
-                    usedLetters.push(letra);
-                    boolean[] prevMask = Arrays.copyOf(mask,mask.length);
-                    mask = gameController.guess(wordc,mask,letra);
-                    if(Arrays.equals(mask,prevMask)){
-                        lives-=1;
-                    }else {
-                        char[] gWord = new char[mask.length];
-                        for(int i = 0;i<mask.length;i++){
-                            if (mask[i]==false){
-                                gWord[i] = '_';
-                            }else{
-                                gWord[i] = wordc[i];
+                } else
+                    {
+                        char letra = Tletra.getText().toString().charAt(0);
+                        usedLetters.push(letra);
+                        boolean[] prevMask = Arrays.copyOf(mask, mask.length);
+
+                        mask = gameController.guess(wordc,mask,letra);
+
+                        if(Arrays.equals(mask,prevMask)){
+                            lives -= 1;
+                        }else {
+                            char[] gWord = new char[mask.length];
+                            for(int i = 0;i < mask.length;i++)
+                            {
+                                if (mask[i]==false)
+                                {
+                                    gWord[i] = '_';
+                                }else{
+                                    gWord[i] = wordc[i];
+                                }
                             }
-                        }
-                        StringBuilder gpalabra = new StringBuilder(gWord.length);
-                        for (char c : gWord){
-                            gpalabra.append(c).append(" ");
-                        }
-                        gpalabra.toString();
-                        palabra.setText(gpalabra);
+                            StringBuilder gpalabra = new StringBuilder(gWord.length);
+                            for (char c : gWord){
+                                gpalabra.append(c).append(" ");
+                            }
+                            gpalabra.toString();
+                            palabra.setText(gpalabra);
                     }
                     updateHangman(lives);
                     updateLetters(usedLetters);
@@ -116,7 +132,7 @@ public class roundActivity extends AppCompatActivity {
                     toastV.show();
                 } else{
                     hints -=1;
-                    char letraH = gameController.hint(word,mask);
+                    char letraH = gameController.hint(word, mask);
                     usedLetters.push(letraH);
                     //palabra.setText(Character.toString(letraH));
                     mask = gameController.guess(wordc,mask,letraH);
