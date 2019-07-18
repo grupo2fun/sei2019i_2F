@@ -41,7 +41,7 @@ public class registerUserActivity extends AppCompatActivity {
 
                 if( registerController1.register( e1.getText().toString(), e2.getText().toString(),e3.getText().toString(), false ) )
                 {
-                    Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
+                    Intent i =new Intent(registerUserActivity.this,categoryActivity.class);
                     startActivity(i);
                 }else
                 {

@@ -55,7 +55,7 @@ public class roundActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         CharSequence texth = "Solo 1 pista por palabra";
         CharSequence textv = "ya se adivino la palabra";
-        CharSequence textd = "ya no teine mas vidas";
+        CharSequence textd = "ya no tiene mas vidas";
         int duration = Toast.LENGTH_SHORT;
         final Toast toastHint = Toast.makeText(context, texth, duration);
         final Toast toastV = Toast.makeText(context, textv, duration);
