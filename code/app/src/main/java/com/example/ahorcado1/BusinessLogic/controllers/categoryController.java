@@ -5,6 +5,8 @@ import com.example.ahorcado1.DataAccess.models.Word;
 import com.example.ahorcado1.DataAccess.repositories.CategoryRepository;
 import com.example.ahorcado1.DataAccess.repositories.WordRepository;
 
+import java.util.List;
+
 public class categoryController {
     public categoryController(){
 
@@ -16,5 +18,9 @@ public class categoryController {
     }
     public boolean deleteCategories(String[] names){
         return Globals.categoryRepository.deleteCategories(names);
+    }
+    public List<Category> getAllCategories(){
+        CategoryRepository categoryRepository = Globals.categoryRepository;
+        return categoryRepository.getAllCategories();
     }
 }
