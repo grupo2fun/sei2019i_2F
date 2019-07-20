@@ -6,7 +6,8 @@ import java.util.Stack;
 
 import static org.junit.Assert.*;
 
-public class gameControllerTest {
+public class gameControllerTest
+{
 
     @Test
     public void find()
@@ -24,7 +25,7 @@ public class gameControllerTest {
         expected.push(1);
 
         //For float values
-        double delta = 0.1;
+        //double delta = 0.1;
 
         gameController gameCont = new gameController();
         output = gameCont.find(wordChar,charToFind);
@@ -34,4 +35,5 @@ public class gameControllerTest {
     }
 
     //Tests.....
+
 }

@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ahorcado1.BusinessLogic.controllers.registerController;
+import com.example.ahorcado1.BusinessLogic.controllers.*;
 
 import com.example.ahorcado1.R;
+
+
 
 public class registerUserActivity extends AppCompatActivity {
 

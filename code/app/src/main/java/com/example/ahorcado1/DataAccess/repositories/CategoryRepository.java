@@ -1,5 +1,6 @@
 package com.example.ahorcado1.DataAccess.repositories;
 
+import com.example.ahorcado1.BusinessLogic.controllers.Globals;
 import com.example.ahorcado1.DataAccess.models.Category;
 import com.example.ahorcado1.DataAccess.models.Round;
 import com.example.ahorcado1.DataAccess.models.User;
@@ -8,6 +9,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CategoryRepository {
@@ -29,6 +31,23 @@ public class CategoryRepository {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean deleteCategories(String[] names){
+        Category category;
+
+        try {
+            for (int i=0;i<names.length;i++){
+                category = getByName(names[i]);
+                Globals.wordRepository.deleteWordByCategory(category);
+                categoryDao.deleteById(category.getId());
+            }
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     public Category update(Category category){
@@ -60,6 +79,19 @@ public class CategoryRepository {
             e.printStackTrace();
         }
         return new Category();
+    }
+
+    public List<Category> getAllCategories(){
+        List<Category> categories = new LinkedList<>();
+
+        try{
+            categories = categoryDao.query(categoryDao.queryBuilder().prepare());
+            return categories;
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return categories;
     }
 
 }
