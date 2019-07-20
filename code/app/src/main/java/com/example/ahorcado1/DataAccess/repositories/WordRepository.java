@@ -7,6 +7,8 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class WordRepository {
 
@@ -47,4 +49,59 @@ public class WordRepository {
         return new Word();
     }
 
+    public List<Word> getWordsByCatDif(Category category, int dif){
+        List<Word> words = new LinkedList<>();
+        try
+        {
+            words = wordDao.query(wordDao.queryBuilder().where().eq("category_id",category.getId()).and().eq("difficult",dif).prepare());
+            return words;
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return words;
+    }
+
+    public boolean deleteWords(String[] word){
+        try {
+            for (int i=0;i<word.length;i++){
+                wordDao.deleteById(getByWord(word[i]).getId());
+            }
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean deleteWordByCategory(Category category){
+       List<Word> words = getByCategories(category);
+       String[] wordsToDel = new String[words.size()];
+       for (int i = 0; i < words.size(); i++) {
+           wordsToDel[i] = words.get(i).getWord();
+       }
+       return deleteWords(wordsToDel);
+    }
+
+    public Word getByWord(String name){
+        try
+        {
+            List<Word> words = wordDao.query(wordDao.queryBuilder().where().eq("word",name).prepare());
+            if (words.size()!=0) return words.get(0);
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return new Word();
+    }
+    public List<Word> getByCategories(Category category){
+        List<Word> words = new LinkedList<>();
+        try
+        {
+            return wordDao.query(wordDao.queryBuilder().where().eq("category_id",category.getId()).prepare());
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return words;
+    }
 }

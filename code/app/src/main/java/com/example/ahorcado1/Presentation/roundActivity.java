@@ -1,6 +1,9 @@
 package com.example.ahorcado1.Presentation;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -21,11 +24,14 @@ import java.util.Stack;
 public class roundActivity extends AppCompatActivity {
     int lives ;
     int hints ;
+    int score;
     ImageButton bGuess ;
     ImageButton bHint;
+    ImageButton bback;
     TextView Tletra ;
     TextView palabra ;
     TextView usedL;
+    TextView Tscore;
     ImageView hang ;
     boolean[] mask = new  boolean[0];
     Stack<Character> usedLetters = new Stack<>();
@@ -38,6 +44,7 @@ public class roundActivity extends AppCompatActivity {
         /*palabra a adivinar*/
         hang = findViewById(R.id.hangmanView);
         usedL = findViewById(R.id.usedletText);
+<<<<<<< HEAD
 
         lives = 6;//vidas
         hints = 1;//pistas
@@ -50,6 +57,16 @@ public class roundActivity extends AppCompatActivity {
         palabra.setText("_ _ _ _ _ _ _ _ _");
 
         //Palabra a arreglo de char
+=======
+        Tscore = findViewById(R.id.ScoreText);
+        lives = 6;//vidas
+        hints = 1;//pistas
+        score = 0;//Puntaje
+        final String word = "actividad";
+        palabra = findViewById(R.id.Palabra);
+        palabra.setText("_ _ _ _ _ _ _ _ _");
+        Tscore.setText(Integer.toString(score));
+>>>>>>> 1f84424ebae95aa6f87b27fae97093e21d52b5ca
         final char[] wordc = word.toCharArray();
         final boolean[] maskTrue = new boolean[wordc.length];
         Arrays.fill(maskTrue,true); //
@@ -64,19 +81,17 @@ public class roundActivity extends AppCompatActivity {
         /*Toast limite de pistas */
         Context context = getApplicationContext();
         CharSequence texth = "Solo 1 pista por palabra";
-        CharSequence textv = "ya se adivino la palabra";
         CharSequence textd = "ya no teine mas vidas";
         //Característica del mensaje
         int duration = Toast.LENGTH_SHORT; //Duración del mensaje
         final Toast toastHint = Toast.makeText(context, texth, duration);
-        final Toast toastV = Toast.makeText(context, textv, duration);
         final Toast toastD = Toast.makeText(context, textd, duration);
         toastHint.setGravity(Gravity.CENTER,0,0);
-        toastV.setGravity(Gravity.CENTER,0,0);
         toastD.setGravity(Gravity.CENTER,0,0);
 
         bGuess =  findViewById(R.id.buttnguess);
         Tletra =  findViewById(R.id.TextLetra);
+        bback = findViewById(R.id.backButton);
 
         /*accion boto de advinar*/
         bGuess.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +101,7 @@ public class roundActivity extends AppCompatActivity {
                 if(lives <= 0)
                 {
                     toastD.show();
+<<<<<<< HEAD
                 }else if (areAllTrue(mask))
                 {
                     toastV.show();
@@ -109,6 +125,26 @@ public class roundActivity extends AppCompatActivity {
                                 }else{
                                     gWord[i] = wordc[i];
                                 }
+=======
+                }else if (areAllTrue(mask)){
+                    WinAlert(score);
+                } else {
+                    char letra = Tletra.getText().toString().charAt(0);
+                    usedLetters.push(letra);
+                    boolean[] prevMask = Arrays.copyOf(mask,mask.length);
+                    mask = gameController.guess(wordc,mask,letra);
+                    if(Arrays.equals(mask,prevMask)){
+                        lives-=1;
+                        score -=50;
+                    }else {
+                        score+=100;
+                        char[] gWord = new char[mask.length];
+                        for(int i = 0;i<mask.length;i++){
+                            if (mask[i]==false){
+                                gWord[i] = '_';
+                            }else{
+                                gWord[i] = wordc[i];
+>>>>>>> 1f84424ebae95aa6f87b27fae97093e21d52b5ca
                             }
                             StringBuilder gpalabra = new StringBuilder(gWord.length);
                             for (char c : gWord){
@@ -119,6 +155,10 @@ public class roundActivity extends AppCompatActivity {
                     }
                     updateHangman(lives);
                     updateLetters(usedLetters);
+                    Tscore.setText(Integer.toString(score));
+                }
+                if(areAllTrue(mask)){
+                    WinAlert(score);
                 }
             }
 
@@ -132,8 +172,9 @@ public class roundActivity extends AppCompatActivity {
                 if(hints <= 0){
                     toastHint.show();
                 }else if (areAllTrue(mask)){
-                    toastV.show();
+                    WinAlert(score);
                 } else{
+                    score-=25;
                     hints -=1;
                     char letraH = gameController.hint(word, mask);
                     usedLetters.push(letraH);
@@ -154,8 +195,18 @@ public class roundActivity extends AppCompatActivity {
                     gpalabra.toString();
                     palabra.setText(gpalabra);
                     updateHangman(lives);
-
+                    Tscore.setText(Integer.toString(score));
                 }
+                if(areAllTrue(mask)){
+                    WinAlert(score);
+                }
+            }
+        });
+        bback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(roundActivity.this,loginUserActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -195,5 +246,23 @@ public class roundActivity extends AppCompatActivity {
     /*Funcion que muestra las letras ya usadas*/
     public void updateLetters(Stack<Character> used){
         usedL.setText(used.toString());
+    }
+
+    public void WinAlert(int score){
+        AlertDialog.Builder WAlert = new AlertDialog.Builder(this);
+        WAlert.setMessage("Ganaste, tu puntaje final es de : "+Integer.toString(score))
+                .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i =new Intent(roundActivity.this,loginUserActivity.class);
+                        startActivity(i);
+                        //dialog.dismiss();
+                    }
+                })
+                .setTitle("!!!!!!!!!!!!!Felicitaciones¡¡¡¡¡¡¡¡¡¡¡¡¡¡")
+                .setIcon(R.drawable.hangamanvictory)
+                .create();
+        WAlert.show();
+
     }
 }
