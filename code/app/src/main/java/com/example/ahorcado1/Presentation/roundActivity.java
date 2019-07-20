@@ -42,14 +42,17 @@ public class roundActivity extends AppCompatActivity {
         lives = 6;//vidas
         hints = 1;//pistas
 
+        /*Debe venir de categoría y nivel seleccionado*/
         final String word = "actividad"; //Palabra a jugar
 
+        //Instancia de la palabra que se muestra
         palabra = findViewById(R.id.Palabra);
         palabra.setText("_ _ _ _ _ _ _ _ _");
 
+        //Palabra a arreglo de char
         final char[] wordc = word.toCharArray();
         final boolean[] maskTrue = new boolean[wordc.length];
-        Arrays.fill(maskTrue,true);
+        Arrays.fill(maskTrue,true); //
 
         mask = new boolean[wordc.length];
         Arrays.fill(mask,false);
@@ -57,13 +60,13 @@ public class roundActivity extends AppCompatActivity {
         final boolean[] maskFalse = mask;
 
 
-
+        //Variables para la presentación
         /*Toast limite de pistas */
         Context context = getApplicationContext();
         CharSequence texth = "Solo 1 pista por palabra";
         CharSequence textv = "ya se adivino la palabra";
         CharSequence textd = "ya no teine mas vidas";
-        //?????
+        //Característica del mensaje
         int duration = Toast.LENGTH_SHORT; //Duración del mensaje
         final Toast toastHint = Toast.makeText(context, texth, duration);
         final Toast toastV = Toast.makeText(context, textv, duration);
@@ -185,7 +188,7 @@ public class roundActivity extends AppCompatActivity {
     /*Revisa si todos los valores en el arrgelo son true*/
     public static boolean areAllTrue(boolean[] array)
     {
-        for(boolean b : array) if(!b) return false;
+        for(boolean b: array) if(!b) return false;
         return true;
     }
 

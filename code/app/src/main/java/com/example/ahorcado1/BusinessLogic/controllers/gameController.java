@@ -1,11 +1,57 @@
 package com.example.ahorcado1.BusinessLogic.controllers;
 
+import com.example.ahorcado1.DataAccess.models.Round;
+import com.example.ahorcado1.DataAccess.repositories.RoundRepository;
+import com.example.ahorcado1.DataAccess.repositories.UserRepository;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
 public class gameController
 {
+    public gameController() { }
+
+    public static void createRound(char letra, boolean[] usedLetters)
+    {
+        RoundRepository roundRepo = Globals.roundRepository;
+        Round round1 = new Round();
+
+
+        /*
+
+        usedLetters.push(letra);
+        boolean[] prevMask = Arrays.copyOf(mask, mask.length);
+
+        mask = gameController.guess(wordc,mask,letra);
+
+        if(Arrays.equals(mask,prevMask)){
+            lives -= 1;
+        }else {
+            char[] gWord = new char[mask.length];
+            for(int i = 0;i < mask.length;i++)
+            {
+                if (mask[i]==false)
+                {
+                    gWord[i] = '_';
+                }else{
+                    gWord[i] = wordc[i];
+                }
+            }
+            StringBuilder gpalabra = new StringBuilder(gWord.length);
+            for (char c : gWord){
+                gpalabra.append(c).append(" ");
+            }
+            gpalabra.toString();
+            palabra.setText(gpalabra);
+        }
+        updateHangman(lives);
+        updateLetters(usedLetters);
+    }
+    */
+
+    }
+
     /*funcion que recibe una letra a adivinar*/
     static public boolean[] guess(char[] palabra,boolean[] mask,char letter){
         Stack<Integer> guesses = find(palabra,letter);
