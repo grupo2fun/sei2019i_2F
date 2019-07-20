@@ -12,10 +12,12 @@ public class gameController
 {
     public gameController() { }
 
-    public static void createRound(char letra, boolean[] usedLetters)
+    public static void createRound()
     {
         RoundRepository roundRepo = Globals.roundRepository;
+        //Usuario, categoría, puntaje
         Round round1 = new Round();
+
 
 
         /*

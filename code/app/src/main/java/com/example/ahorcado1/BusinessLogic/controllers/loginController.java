@@ -9,7 +9,7 @@ public class loginController {
 
     public loginController( ){ }
 
-    public User loginUser (String user, String Password)
+    public User loginUser(String user, String Password)
     {
         UserRepository userRepository = Globals.userRepository;
 

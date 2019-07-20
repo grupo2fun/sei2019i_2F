@@ -44,20 +44,7 @@ public class roundActivity extends AppCompatActivity {
         /*palabra a adivinar*/
         hang = findViewById(R.id.hangmanView);
         usedL = findViewById(R.id.usedletText);
-<<<<<<< HEAD
 
-        lives = 6;//vidas
-        hints = 1;//pistas
-
-        /*Debe venir de categoría y nivel seleccionado*/
-        final String word = "actividad"; //Palabra a jugar
-
-        //Instancia de la palabra que se muestra
-        palabra = findViewById(R.id.Palabra);
-        palabra.setText("_ _ _ _ _ _ _ _ _");
-
-        //Palabra a arreglo de char
-=======
         Tscore = findViewById(R.id.ScoreText);
         lives = 6;//vidas
         hints = 1;//pistas
@@ -66,7 +53,7 @@ public class roundActivity extends AppCompatActivity {
         palabra = findViewById(R.id.Palabra);
         palabra.setText("_ _ _ _ _ _ _ _ _");
         Tscore.setText(Integer.toString(score));
->>>>>>> 1f84424ebae95aa6f87b27fae97093e21d52b5ca
+
         final char[] wordc = word.toCharArray();
         final boolean[] maskTrue = new boolean[wordc.length];
         Arrays.fill(maskTrue,true); //
@@ -96,72 +83,47 @@ public class roundActivity extends AppCompatActivity {
         /*accion boto de advinar*/
         bGuess.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(lives <= 0)
-                {
+            public void onClick(View v) {
+                if (lives <= 0) {
                     toastD.show();
-<<<<<<< HEAD
-                }else if (areAllTrue(mask))
-                {
-                    toastV.show();
-                } else
-                    {
-                        char letra = Tletra.getText().toString().charAt(0);
-                        usedLetters.push(letra);
-                        boolean[] prevMask = Arrays.copyOf(mask, mask.length);
 
-                        mask = gameController.guess(wordc,mask,letra);
-
-                        if(Arrays.equals(mask,prevMask)){
-                            lives -= 1;
-                        }else {
-                            char[] gWord = new char[mask.length];
-                            for(int i = 0;i < mask.length;i++)
-                            {
-                                if (mask[i]==false)
-                                {
-                                    gWord[i] = '_';
-                                }else{
-                                    gWord[i] = wordc[i];
-                                }
-=======
-                }else if (areAllTrue(mask)){
+                } else if (areAllTrue(mask)) {
                     WinAlert(score);
                 } else {
                     char letra = Tletra.getText().toString().charAt(0);
                     usedLetters.push(letra);
-                    boolean[] prevMask = Arrays.copyOf(mask,mask.length);
-                    mask = gameController.guess(wordc,mask,letra);
-                    if(Arrays.equals(mask,prevMask)){
-                        lives-=1;
-                        score -=50;
-                    }else {
-                        score+=100;
+                    boolean[] prevMask = Arrays.copyOf(mask, mask.length);
+                    mask = gameController.guess(wordc, mask, letra);
+                    if (Arrays.equals(mask, prevMask)) {
+                        lives -= 1;
+                        score -= 50;
+                    } else {
+                        score += 100;
                         char[] gWord = new char[mask.length];
-                        for(int i = 0;i<mask.length;i++){
-                            if (mask[i]==false){
+                        for (int i = 0; i < mask.length; i++) {
+                            if (mask[i] == false) {
                                 gWord[i] = '_';
-                            }else{
+                            } else {
                                 gWord[i] = wordc[i];
->>>>>>> 1f84424ebae95aa6f87b27fae97093e21d52b5ca
+
                             }
                             StringBuilder gpalabra = new StringBuilder(gWord.length);
-                            for (char c : gWord){
+                            for (char c : gWord) {
                                 gpalabra.append(c).append(" ");
                             }
                             gpalabra.toString();
                             palabra.setText(gpalabra);
+                        }
+                        updateHangman(lives);
+                        updateLetters(usedLetters);
+                        Tscore.setText(Integer.toString(score));
                     }
-                    updateHangman(lives);
-                    updateLetters(usedLetters);
-                    Tscore.setText(Integer.toString(score));
+                    if (areAllTrue(mask)) {
+                        WinAlert(score);
+                    }
                 }
-                if(areAllTrue(mask)){
-                    WinAlert(score);
-                }
-            }
 
+            }
         });
 
         /*Accion boton de pista*/
@@ -202,6 +164,7 @@ public class roundActivity extends AppCompatActivity {
                 }
             }
         });
+
         bback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
