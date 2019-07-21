@@ -22,9 +22,12 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class roundActivity extends AppCompatActivity {
+    //Variables de juego
     int lives ;
     int hints ;
     int score;
+
+    //
     ImageButton bGuess ;
     ImageButton bHint;
     ImageButton bback;
@@ -46,10 +49,13 @@ public class roundActivity extends AppCompatActivity {
         usedL = findViewById(R.id.usedletText);
 
         Tscore = findViewById(R.id.ScoreText);
+
         lives = 6;//vidas
         hints = 1;//pistas
         score = 0;//Puntaje
         final String word = "actividad";
+
+
         palabra = findViewById(R.id.Palabra);
         palabra.setText("_ _ _ _ _ _ _ _ _");
         Tscore.setText(Integer.toString(score));

@@ -11,15 +11,28 @@ public class categoryController {
     public categoryController(){
 
     }
-    public boolean createCategory(String name){
+
+    //Creación del registro cateogoría
+    public boolean createCategory(String name)
+    {
         Category category = new Category(name);
         if (!Globals.categoryRepository.create(category)) return false;
         return true;
     }
-    public boolean deleteCategories(String[] names){
+
+    public Category getCategory(int idCategory)
+    {
+        Category category = Globals.categoryRepository.getById(idCategory);
+        return category;
+    }
+
+    public boolean deleteCategories(String[] names)
+    {
         return Globals.categoryRepository.deleteCategories(names);
     }
-    public List<Category> getAllCategories(){
+
+    public List<Category> getAllCategories()
+    {
         CategoryRepository categoryRepository = Globals.categoryRepository;
         return categoryRepository.getAllCategories();
     }

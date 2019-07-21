@@ -15,6 +15,9 @@ public class loginController {
 
         User user1 = userRepository.getByUsername(user);
 
+        //Instancia del usuario globalmente
+        Globals.user = user1;
+
         if(user1.getId() == -1)
         {
             return new User();

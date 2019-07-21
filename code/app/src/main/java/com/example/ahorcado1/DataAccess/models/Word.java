@@ -13,15 +13,15 @@ public class Word {
     @DatabaseField(canBeNull = false)
     private String word;
     @DatabaseField(canBeNull = false)
-    private int difficult;
+    private int difficulty;
 
     public Word() {
     }
 
-    public Word(Category category, String word, int difficult) {
+    public Word(Category category, String word, int difficulty) {
         this.category = category;
         this.word = word;
-        this.difficult = difficult;
+        this.difficulty = difficulty;
     }
 
     public Long getId() {
@@ -44,7 +44,7 @@ public class Word {
         this.word = word;
     }
 
-    public int getDifficult() {return difficult;}
+    public int getDifficult() {return difficulty;}
 
-    public void setDifficult(int difficult) {this.difficult = difficult;}
+    public void setDifficult(int difficult) {this.difficulty = difficult;}
 }

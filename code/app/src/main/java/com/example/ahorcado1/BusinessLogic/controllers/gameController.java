@@ -1,6 +1,8 @@
 package com.example.ahorcado1.BusinessLogic.controllers;
 
+import com.example.ahorcado1.DataAccess.models.Category;
 import com.example.ahorcado1.DataAccess.models.Round;
+import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.RoundRepository;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 
@@ -12,47 +14,24 @@ public class gameController
 {
     public gameController() { }
 
-    public static void createRound()
+    public static void createRound(User user, Category category, long puntaje)
     {
+        //Creación de objeto 'Round'
         RoundRepository roundRepo = Globals.roundRepository;
-        //Usuario, categoría, puntaje
-        Round round1 = new Round();
+        //Instancia del objeto ronda: Usuario, categoría, puntaje
+        Round round1 = new Round(user, category, puntaje);
+        //Creación del registro a partir del objeto
+        roundRepo.create(round1);
 
+        //Actualización de 'user'
+        UserRepository userRepo = Globals.userRepository;
+        long puntajeAcumulado = round1.getScore() + Globals.user.getPuntaje(); //Puntaje de la ronda + puntaje del usuario
+        userRepo.update(Globals.user).setPuntaje((int)puntajeAcumulado);
 
-
-        /*
-
-        usedLetters.push(letra);
-        boolean[] prevMask = Arrays.copyOf(mask, mask.length);
-
-        mask = gameController.guess(wordc,mask,letra);
-
-        if(Arrays.equals(mask,prevMask)){
-            lives -= 1;
-        }else {
-            char[] gWord = new char[mask.length];
-            for(int i = 0;i < mask.length;i++)
-            {
-                if (mask[i]==false)
-                {
-                    gWord[i] = '_';
-                }else{
-                    gWord[i] = wordc[i];
-                }
-            }
-            StringBuilder gpalabra = new StringBuilder(gWord.length);
-            for (char c : gWord){
-                gpalabra.append(c).append(" ");
-            }
-            gpalabra.toString();
-            palabra.setText(gpalabra);
-        }
-        updateHangman(lives);
-        updateLetters(usedLetters);
-    }
-    */
 
     }
+
+
 
     /*funcion que recibe una letra a adivinar*/
     static public boolean[] guess(char[] palabra,boolean[] mask,char letter){
