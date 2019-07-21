@@ -15,28 +15,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ahorcado1.BusinessLogic.controllers.Globals;
 import com.example.ahorcado1.BusinessLogic.controllers.gameController;
+import com.example.ahorcado1.BusinessLogic.controllers.wordController;
+import com.example.ahorcado1.DataAccess.models.Word;
 import com.example.ahorcado1.R;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class roundActivity extends AppCompatActivity {
-<<<<<<< HEAD
-    //Variables de juego
-    int lives ;
-    int hints ;
-    int score;
 
-    //
-    ImageButton bGuess ;
-=======
     int lives;
     int hints;
     int score;
     ImageButton bGuess;
->>>>>>> 5a1259fde5c3d67678fe9e39f21c444f309a3d24
+
     ImageButton bHint;
     ImageButton bback;
     TextView Tletra;
@@ -61,7 +57,12 @@ public class roundActivity extends AppCompatActivity {
         lives = 6;//vidas
         hints = 1;//pistas
         score = 0;//Puntaje
-        final String word = "actividad";
+
+        //Palabra a jugar proveniente de la categoria
+        wordController wordCont = new wordController();
+        List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, 1); //Categoría y dificultad
+        int randomWordOfList = 0;
+        final String word = listOfWords.get(0).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
 
 
         palabra = findViewById(R.id.Palabra);
@@ -97,11 +98,24 @@ public class roundActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (lives <= 0) {
+                    //Se sale a otra actividad que resume y crea y guarda la ronda
+                    gameController gameCont = new gameController();
+                    gameCont.createRound(Globals.user,Globals.category, (long)score);
+                    //Instancia de otra aactividad INTENT.... ETC
+
                     toastD.show();
+                    lossAlert(score);
                 } else if (areAllTrue(mask)) {
+                    //Se sale a otra actividad que resume y crea y guarda la ronda
+                    gameController gameCont = new gameController();
+                    gameCont.createRound(Globals.user,Globals.category, (long)score);
+                    //Instancia de otra aactividad INTENT.... ETC
+
                     WinAlert(score);
                 } else {
                     char letra = Tletra.getText().toString().charAt(0);
+                    //Si ya se uso ese caracter, siempre mostrará el mensaje y no se podrá continuar.
+                    //Sino, continua el juego.
                     if (usedLetters.contains(letra)) {
                         toastR.show();
                     } else {
@@ -133,9 +147,11 @@ public class roundActivity extends AppCompatActivity {
                         Tscore.setText(Integer.toString(score));
                     }
                 }
+                /*
                 if (areAllTrue(mask)) {
                     WinAlert(score);
                 }
+                */
             }
 
         });
@@ -237,6 +253,25 @@ public class roundActivity extends AppCompatActivity {
                 .setIcon(R.drawable.hangamanvictory)
                 .create();
         WAlert.show();
+
+    }
+
+    public void lossAlert(int score)
+    {
+        AlertDialog.Builder lAlert = new AlertDialog.Builder(this);
+        lAlert.setMessage("Perdiste, tu puntaje final es de : " + Integer.toString(score))
+                .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                        startActivity(i);
+                        //dialog.dismiss();
+                    }
+                })
+                .setTitle("Inténtalo de nuevo")
+                .setIcon(R.drawable.hangamanvictory)
+                .create();
+        lAlert.show();
 
     }
 

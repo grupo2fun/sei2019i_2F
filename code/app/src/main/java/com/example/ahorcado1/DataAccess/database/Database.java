@@ -3,6 +3,7 @@ package com.example.ahorcado1.DataAccess.database;
 
 import com.example.ahorcado1.BusinessLogic.controllers.Globals;
 import com.example.ahorcado1.DataAccess.models.Category;
+import com.example.ahorcado1.DataAccess.models.Round;
 import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.models.Word;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -25,10 +26,10 @@ public class Database {
         try {
             connection = new JdbcConnectionSource(CONNECTION, USER, PASS);
             //Instancias por cada clase
-
             TableUtils.createTableIfNotExists(connection, User.class);
             TableUtils.createTableIfNotExists(connection, Category.class);
             TableUtils.createTableIfNotExists(connection, Word.class);
+            TableUtils.createTableIfNotExists(connection, Round.class);
             //TableUtils.createTableIfNotExists(connection, Rol.class);
 
         } catch (SQLException e) {

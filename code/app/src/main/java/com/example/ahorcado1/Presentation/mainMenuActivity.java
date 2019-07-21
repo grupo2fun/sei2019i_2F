@@ -70,11 +70,13 @@ public class mainMenuActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Se obtienen la información de la categoría
-                String nombreCategoria = "Animales";
-                int idCategoria = 0;
+                //String nombreCategoria = "Animales";
+                int idCategoria = 1;
+
                 //Instancia del controlador de categoría y actualización del objeto global de categoría
                 categoryController categoryCont = new categoryController();
                 Globals.category = categoryCont.getCategory(idCategoria);
+
                 //Cambio de actividad
                 Intent i =new Intent(mainMenuActivity.this, roundActivity.class);
                 startActivity(i);

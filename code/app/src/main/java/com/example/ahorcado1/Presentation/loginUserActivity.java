@@ -52,8 +52,8 @@ public class loginUserActivity extends AppCompatActivity {
                 password = e2.getText().toString();
                 if( loginController1.loginUser( user, password ).getId() != -1 )
                 {
+                    //Instancia global de User
                     Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
-
                     startActivity(i);
                 }else {
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
@@ -68,7 +68,7 @@ public class loginUserActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
-                Intent i =new Intent(loginUserActivity.this,roundActivity.class);
+                Intent i =new Intent(loginUserActivity.this, registerUserActivity.class);
                 startActivity(i);
             }
         });

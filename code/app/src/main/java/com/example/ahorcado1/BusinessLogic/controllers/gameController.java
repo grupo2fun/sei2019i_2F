@@ -5,8 +5,6 @@ import com.example.ahorcado1.DataAccess.models.Round;
 import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.RoundRepository;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
-
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
@@ -25,8 +23,9 @@ public class gameController
 
         //Actualización de 'user'
         UserRepository userRepo = Globals.userRepository;
-        long puntajeAcumulado = round1.getScore() + Globals.user.getPuntaje(); //Puntaje de la ronda + puntaje del usuario
-        userRepo.update(Globals.user).setPuntaje((int)puntajeAcumulado);
+        long puntajeAcumulado = round1.getScore() + (long)Globals.user.getPuntaje(); //Puntaje de la ronda + puntaje del usuario
+        Globals.user.setPuntaje((int)puntajeAcumulado);
+        userRepo.update(Globals.user);
 
 
     }

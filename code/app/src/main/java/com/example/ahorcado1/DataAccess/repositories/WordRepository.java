@@ -53,7 +53,7 @@ public class WordRepository {
         List<Word> words = new LinkedList<>();
         try
         {
-            words = wordDao.query(wordDao.queryBuilder().where().eq("category_id",category.getId()).and().eq("difficult",dif).prepare());
+            words = wordDao.query(wordDao.queryBuilder().where().eq("category_id",category.getId()).and().eq("difficulty",dif).prepare());
             return words;
         }catch(SQLException e)
         {
