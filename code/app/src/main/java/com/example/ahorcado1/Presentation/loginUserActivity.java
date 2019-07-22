@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ahorcado1.BusinessLogic.controllers.Globals;
+import com.example.ahorcado1.BusinessLogic.controllers.gameController;
 import com.example.ahorcado1.BusinessLogic.controllers.loginController;
 import com.example.ahorcado1.DataAccess.database.Database;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
@@ -25,6 +26,7 @@ public class loginUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
         //For network connections in main thread

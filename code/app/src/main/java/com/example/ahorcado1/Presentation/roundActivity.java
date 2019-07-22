@@ -42,6 +42,7 @@ public class roundActivity extends AppCompatActivity {
     ImageView hang;
     boolean[] mask = new boolean[0];
     LinkedList<Character> usedLetters = new LinkedList<>();
+    gameController gameCont = new gameController();
     //Stack<Character> usedLetters = new Stack<>();
 
     @Override
@@ -61,8 +62,8 @@ public class roundActivity extends AppCompatActivity {
         //Palabra a jugar proveniente de la categoria
         wordController wordCont = new wordController();
         List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, 1); //Categoría y dificultad
-        int randomWordOfList = 0;
-        final String word = listOfWords.get(0).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
+        int randomWordOfList = gameCont.randomNumber(listOfWords.size() - 1);
+        final String word = listOfWords.get(randomWordOfList).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
 
 
         palabra = findViewById(R.id.Palabra);
@@ -107,17 +108,17 @@ public class roundActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (lives <= 0) {
                     //Se sale a otra actividad que resume y crea y guarda la ronda
-                    gameController gameCont = new gameController();
+
                     gameCont.createRound(Globals.user,Globals.category, (long)score);
-                    //Instancia de otra aactividad INTENT.... ETC
+                    //Instancia de otra actividad INTENT.... ETC
 
                     toastD.show();
                     lossAlert(score);
                 } else if (areAllTrue(mask)) {
                     //Se sale a otra actividad que resume y crea y guarda la ronda
-                    gameController gameCont = new gameController();
+
                     gameCont.createRound(Globals.user,Globals.category, (long)score);
-                    //Instancia de otra aactividad INTENT.... ETC
+                    //Instancia de otra actividad INTENT.... ETC
 
                     WinAlert(score);
                 } else {
@@ -158,7 +159,6 @@ public class roundActivity extends AppCompatActivity {
 
                 if (areAllTrue(mask)) {
                     //Se sale a otra actividad que resume y crea y guarda la ronda
-                    gameController gameCont = new gameController();
                     gameCont.createRound(Globals.user,Globals.category, (long)score);
                     //Instancia de otra aactividad INTENT.... ETC
                     WinAlert(score);

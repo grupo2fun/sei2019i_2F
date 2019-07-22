@@ -70,8 +70,7 @@ public class mainMenuActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Se obtienen la información de la categoría
-                //String nombreCategoria = "Animales";
-                int idCategoria = 1;
+                int idCategoria = 1; //Comida
 
                 //Instancia del controlador de categoría y actualización del objeto global de categoría
                 categoryController categoryCont = new categoryController();

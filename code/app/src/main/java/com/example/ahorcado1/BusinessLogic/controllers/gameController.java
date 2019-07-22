@@ -31,6 +31,13 @@ public class gameController
     }
 
 
+    public static int randomNumber(int max)
+    {
+        //Random random = new Random();
+        double random = (Math.random() * ((max - 0) + 1)) + 0;
+        int num = (int) random;
+        return num;
+    }
 
     /*funcion que recibe una letra a adivinar*/
     static public boolean[] guess(char[] palabra,boolean[] mask,char letter){
