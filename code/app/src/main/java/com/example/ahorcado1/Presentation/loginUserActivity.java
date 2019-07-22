@@ -22,9 +22,8 @@ public class loginUserActivity extends AppCompatActivity {
     EditText e1,e2;
     Button be,br;
 
-    //Datos de usuario
-    String user;
-    String password;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,7 +51,7 @@ public class loginUserActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Si el id del usuario es diferente de -1
-<<<<<<< HEAD
+
                 User user = loginController1.loginUser( e1.getText().toString(),e2.getText().toString() );
                 if(user.getId() != -1 )
                 {
@@ -60,18 +59,10 @@ public class loginUserActivity extends AppCompatActivity {
                         Intent i = new Intent(loginUserActivity.this, adminActivity.class);
                         startActivity(i);
                     } else {
-                        Intent i = new Intent(loginUserActivity.this, categoryActivity.class);
+                        Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
                         startActivity(i);
                     }
-=======
-                user = e1.getText().toString();
-                password = e2.getText().toString();
-                if( loginController1.loginUser( user, password ).getId() != -1 )
-                {
-                    //Instancia global de User
-                    Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
-                    startActivity(i);
->>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
+
                 }else {
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
                 }
@@ -85,11 +76,8 @@ public class loginUserActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
-<<<<<<< HEAD
-                Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
-=======
                 Intent i =new Intent(loginUserActivity.this, registerUserActivity.class);
->>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
+
                 startActivity(i);
             }
         });

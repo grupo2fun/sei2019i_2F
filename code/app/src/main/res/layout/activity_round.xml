@@ -82,16 +82,12 @@
         android:id="@+id/buttnguess"
         android:layout_width="128dp"
         android:layout_height="52dp"
-<<<<<<< HEAD
+
         android:layout_marginStart="8dp"
         android:layout_marginEnd="148dp"
         android:layout_marginBottom="268dp"
-=======
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="252dp"
->>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
+
+
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
