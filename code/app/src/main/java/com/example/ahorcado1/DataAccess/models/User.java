@@ -17,7 +17,7 @@ public class User
     @DatabaseField(canBeNull = false)
     private String password;
     @DatabaseField(canBeNull = false)
-    private int puntaje;
+    private int scoreAccum;//mODIFICAR POR SCOREACCUM
     @DatabaseField(canBeNull = false)
     private Boolean adminOrUser;
     //@DatabaseField(foreign = true) //Asi se trabajan con llaves foraneas, usuario no tiene pero partida si debe tener de llave foranea del usuario
@@ -33,9 +33,17 @@ public class User
         this.setCompleteName(completeName);
         this.setUsername(username);
         this.setPassword(password);
-        this.setPuntaje(0);
+        this.setScoreAccum(0);
         this.setAdminOrUser(adminOrUser);
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCompleteName() {
@@ -62,23 +70,17 @@ public class User
         this.password = password;
     }
 
-    public int getPuntaje() {
-        return puntaje;
+    public int getScoreAccum() {
+        return scoreAccum;
     }
 
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
+    public void setScoreAccum(int scoreAccum) {
+        this.scoreAccum = scoreAccum;
     }
 
-    public long getId() {
-        return id;
+    public Boolean getAdminOrUser() {
+        return adminOrUser;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Boolean getAdminOrUser() { return adminOrUser; }
 
     public void setAdminOrUser(Boolean adminOrUser) {
         this.adminOrUser = adminOrUser;

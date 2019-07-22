@@ -23,8 +23,8 @@ public class gameController
 
         //Actualización de 'user'
         UserRepository userRepo = Globals.userRepository;
-        long puntajeAcumulado = round1.getScore() + (long)Globals.user.getPuntaje(); //Puntaje de la ronda + puntaje del usuario
-        Globals.user.setPuntaje((int)puntajeAcumulado);
+        long puntajeAcumulado = round1.getScore() + (long)Globals.user.getScoreAccum(); //Puntaje de la ronda + puntaje del usuario
+        Globals.user.setScoreAccum((int)puntajeAcumulado);
         userRepo.update(Globals.user);
 
 
