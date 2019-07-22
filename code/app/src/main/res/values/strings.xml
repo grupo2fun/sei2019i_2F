@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ahorcado1</string>
+    <string name="title_activity_overview">overviewActivity</string>
 </resources>

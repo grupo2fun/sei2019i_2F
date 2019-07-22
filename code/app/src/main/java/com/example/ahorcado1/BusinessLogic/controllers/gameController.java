@@ -1,11 +1,44 @@
 package com.example.ahorcado1.BusinessLogic.controllers;
 
-import java.util.Arrays;
+import com.example.ahorcado1.DataAccess.models.Category;
+import com.example.ahorcado1.DataAccess.models.Round;
+import com.example.ahorcado1.DataAccess.models.User;
+import com.example.ahorcado1.DataAccess.repositories.RoundRepository;
+import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import java.util.Random;
 import java.util.Stack;
 
 public class gameController
 {
+    public gameController() { }
+
+    public static void createRound(User user, Category category, long puntaje)
+    {
+        //Creación de objeto 'Round'
+        RoundRepository roundRepo = Globals.roundRepository;
+        //Instancia del objeto ronda: Usuario, categoría, puntaje
+        Round round1 = new Round(user, category, puntaje);
+        //Creación del registro a partir del objeto
+        roundRepo.create(round1);
+
+        //Actualización de 'user'
+        UserRepository userRepo = Globals.userRepository;
+        long puntajeAcumulado = round1.getScore() + (long)Globals.user.getScoreAccum(); //Puntaje de la ronda + puntaje del usuario
+        Globals.user.setScoreAccum((int)puntajeAcumulado);
+        userRepo.update(Globals.user);
+
+
+    }
+
+
+    public static int randomNumber(int max)
+    {
+        //Random random = new Random();
+        double random = (Math.random() * ((max - 0) + 1)) + 0;
+        int num = (int) random;
+        return num;
+    }
+
     /*funcion que recibe una letra a adivinar*/
     static public boolean[] guess(char[] palabra,boolean[] mask,char letter){
         Stack<Integer> guesses = find(palabra,letter);

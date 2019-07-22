@@ -11,15 +11,12 @@ public class Category {
     private long id;
     @DatabaseField(canBeNull = false)
     private String name;
-    @DatabaseField(canBeNull = false)
-    private int dificulty;
 
     public Category() {
     }
 
-    public Category(String name, int dificulty) {
+    public Category(String name) {
         this.name = name;
-        this.dificulty = dificulty;
     }
 
     public long getId() {
@@ -32,13 +29,5 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getDificulty() {
-        return dificulty;
-    }
-
-    public void setDificulty(int dificulty) {
-        this.dificulty = dificulty;
     }
 }

@@ -4,7 +4,7 @@ package com.example.ahorcado1.DataAccess.models;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "round")
+@DatabaseTable(tableName = "Round")
 public class Round {
 
     @DatabaseField(generatedId = true)
