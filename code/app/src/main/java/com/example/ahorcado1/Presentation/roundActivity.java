@@ -66,9 +66,17 @@ public class roundActivity extends AppCompatActivity {
 
 
         palabra = findViewById(R.id.Palabra);
-        palabra.setText("_ _ _ _ _ _ _ _ _");
+        //palabra.setText("_ _ _ _ _ _ _ _ _");
         Tscore.setText(Integer.toString(score));
         final char[] wordc = word.toCharArray();
+        //muestra los espacios al inicio de la actividad
+        final char beginword[]=new char[wordc.length];
+        Arrays.fill(beginword,'_');
+        StringBuilder bpalabra = new StringBuilder(beginword.length);
+        for (char c : beginword) {
+            bpalabra.append(c).append(" ");
+        }
+        palabra.setText(bpalabra);
         final boolean[] maskTrue = new boolean[wordc.length];
         Arrays.fill(maskTrue, true);
         mask = new boolean[wordc.length];
