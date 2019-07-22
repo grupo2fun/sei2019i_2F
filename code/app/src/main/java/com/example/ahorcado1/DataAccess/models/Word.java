@@ -12,13 +12,16 @@ public class Word {
     private Category category;
     @DatabaseField(canBeNull = false)
     private String word;
+    @DatabaseField(canBeNull = false)
+    private int difficulty;
 
     public Word() {
     }
 
-    public Word(Category category, String word) {
+    public Word(Category category, String word, int difficulty) {
         this.category = category;
         this.word = word;
+        this.difficulty = difficulty;
     }
 
     public Long getId() {
@@ -40,4 +43,8 @@ public class Word {
     public void setWord(String word) {
         this.word = word;
     }
+
+    public int getDifficult() {return difficulty;}
+
+    public void setDifficult(int difficult) {this.difficulty = difficult;}
 }

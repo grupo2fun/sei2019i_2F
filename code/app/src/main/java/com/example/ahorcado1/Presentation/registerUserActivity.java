@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ahorcado1.BusinessLogic.controllers.registerController;
+import com.example.ahorcado1.BusinessLogic.controllers.*;
 
 import com.example.ahorcado1.R;
+
+
 
 public class registerUserActivity extends AppCompatActivity {
 
@@ -41,7 +43,7 @@ public class registerUserActivity extends AppCompatActivity {
 
                 if( registerController1.register( e1.getText().toString(), e2.getText().toString(),e3.getText().toString(), false ) )
                 {
-                    Intent i =new Intent(registerUserActivity.this,mainMenuActivity.class);
+                    Intent i =new Intent(registerUserActivity.this,loginUserActivity.class);
                     startActivity(i);
                 }else
                 {

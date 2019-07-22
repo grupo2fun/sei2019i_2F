@@ -9,11 +9,14 @@ public class loginController {
 
     public loginController( ){ }
 
-    public User loginUser (String user, String Password)
+    public User loginUser(String user, String Password)
     {
         UserRepository userRepository = Globals.userRepository;
 
         User user1 = userRepository.getByUsername(user);
+
+        //Instancia del usuario globalmente
+        Globals.user = user1;
 
         if(user1.getId() == -1)
         {

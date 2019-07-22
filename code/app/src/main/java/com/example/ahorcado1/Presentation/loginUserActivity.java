@@ -18,6 +18,10 @@ import com.example.ahorcado1.R;
 public class loginUserActivity extends AppCompatActivity {
     EditText e1,e2;
     Button be,br;
+
+    //Datos de usuario
+    String user;
+    String password;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,6 +31,8 @@ public class loginUserActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //Instancia de Base de Datos
+
+
 
         //Instancia de controller
         final loginController loginController1 = new loginController();
@@ -42,9 +48,12 @@ public class loginUserActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Si el id del usuario es diferente de -1
-                if( loginController1.loginUser( e1.getText().toString(),e2.getText().toString() ).getId() != -1 )
+                user = e1.getText().toString();
+                password = e2.getText().toString();
+                if( loginController1.loginUser( user, password ).getId() != -1 )
                 {
-                    Intent i =new Intent(loginUserActivity.this, mainMenuActivity.class);
+                    //Instancia global de User
+                    Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
                     startActivity(i);
                 }else {
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
@@ -58,7 +67,8 @@ public class loginUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
+                //Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
+                Intent i =new Intent(loginUserActivity.this, registerUserActivity.class);
                 startActivity(i);
             }
         });
