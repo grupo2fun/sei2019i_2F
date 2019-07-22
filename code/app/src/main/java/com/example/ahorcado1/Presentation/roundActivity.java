@@ -88,8 +88,13 @@ public class roundActivity extends AppCompatActivity {
         /*Toast limite de pistas */
         Context context = getApplicationContext();
         CharSequence texth = "Solo 1 pista por palabra";
+<<<<<<< HEAD
+        CharSequence textv = "ya se adivino la palabra";
+        CharSequence textd = "ya no tiene mas vidas";
+=======
         CharSequence textd = "ya no tiene mas vidas";
         CharSequence textr = "letra ya usada";
+>>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
         int duration = Toast.LENGTH_SHORT;
         final Toast toastHint = Toast.makeText(context, texth, duration);
         final Toast toastD = Toast.makeText(context, textd, duration);
