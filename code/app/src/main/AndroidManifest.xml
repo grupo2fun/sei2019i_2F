@@ -11,20 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+
         <activity android:name=".Presentation.adminActivity"></activity>
         <activity android:name=".Presentation.categoryActivity" />
         <activity android:name=".Presentation.beginigActivity">
-=======
-        <activity
-            android:name=".Presentation.overviewActivity"
-            android:label="@string/title_activity_overview"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Presentation.roundActivity" />
-        <activity android:name=".Presentation.registerUserActivity" />
-        <activity android:name=".Presentation.mainMenuActivity" />
-        <activity android:name=".Presentation.loginUserActivity">
->>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +24,9 @@
         <activity android:name=".Presentation.roundActivity" />
         <activity android:name=".Presentation.registerUserActivity" />
         <activity android:name=".Presentation.mainMenuActivity" />
-        <activity android:name=".Presentation.loginUserActivity" />
+        <activity android:name=".Presentation.loginUserActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -13,13 +13,9 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 public class Database {
-<<<<<<< HEAD
+
     private static final String HOST = "jdbc:mysql://10.203.168.187:3306/";        //Direccion ip de la base
-=======
 
-    private static final String HOST = "jdbc:mysql://10.203.155.45:3306/";        //Direccion ip de la base
-
->>>>>>> f6b6aaee5987e06f865d790b7119dc5e1a9617eb
     private static final String DB_NAME = "db_hangman";
     private static final String CONNECTION = HOST + DB_NAME;
     private static final String USER = "hangManUser";
