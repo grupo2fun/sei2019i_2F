@@ -147,11 +147,16 @@ public class roundActivity extends AppCompatActivity {
                         Tscore.setText(Integer.toString(score));
                     }
                 }
-                /*
+
                 if (areAllTrue(mask)) {
+                    //Se sale a otra actividad que resume y crea y guarda la ronda
+                    gameController gameCont = new gameController();
+                    gameCont.createRound(Globals.user,Globals.category, (long)score);
+                    //Instancia de otra aactividad INTENT.... ETC
                     WinAlert(score);
+
                 }
-                */
+
             }
 
         });
