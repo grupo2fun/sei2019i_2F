@@ -11,6 +11,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="8dp"
@@ -18,13 +19,21 @@
         android:textColor="#FF5252"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="144dp"
+        android:text="CATEGORIAS"
+        android:textColor="#FF5252"
+        android:textSize="40sp"
+>>>>>>> 7ea60ffcbe61e371b26bd7de5ed56adf17a9dad6
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/animalsBtn"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spnCat"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -35,11 +44,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent" />
+=======
+        android:layout_marginTop="264dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> 7ea60ffcbe61e371b26bd7de5ed56adf17a9dad6
 
-    <Button
-        android:id="@+id/cosasBtn"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spnDif"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
@@ -50,11 +65,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+=======
+        android:layout_marginTop="308dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> 7ea60ffcbe61e371b26bd7de5ed56adf17a9dad6
 
     <Button
-        android:id="@+id/actividadesBtn"
+        android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="392dp"
@@ -65,4 +86,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+=======
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/edit_text_background"
+        android:text="JUGAR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+>>>>>>> 7ea60ffcbe61e371b26bd7de5ed56adf17a9dad6
 </android.support.constraint.ConstraintLayout>

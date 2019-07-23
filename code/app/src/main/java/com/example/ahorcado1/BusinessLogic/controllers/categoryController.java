@@ -25,6 +25,9 @@ public class categoryController {
         Category category = Globals.categoryRepository.getById(idCategory);
         return category;
     }
+    public Category getCategoryByName(String str){
+        return Globals.categoryRepository.getByName(str);
+    }
 
     public boolean deleteCategories(String[] names)
     {

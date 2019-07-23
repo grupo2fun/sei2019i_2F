@@ -54,9 +54,10 @@ public class adminActivity extends AppCompatActivity {
         etext = (EditText) findViewById(R.id.editText1);
 
         //Lista de categorias
-        listaString = new ArrayList<>();
-        listaString.add("Deportes"); //Ejemplos
-        listaString.add("Juegos");
+        //listaString = new ArrayList<>();
+        //listaString.add("Deportes"); //Ejemplos
+        //listaString.add("Juegos");
+
         //Controller
         cc = new categoryController();
         List<Category> categories = cc.getAllCategories(); //Objetos de tipo categoria
@@ -76,6 +77,7 @@ public class adminActivity extends AppCompatActivity {
         //adapter finally used
         final MyAdapter adapter1 = new MyAdapter(this, listaCategorias);
         list.setAdapter(adapter1);
+        //En Cada posición de la lista, se puede accionar.
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
