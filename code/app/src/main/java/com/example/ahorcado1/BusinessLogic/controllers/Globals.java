@@ -26,6 +26,7 @@ public final class Globals {
     //Ronda
     public static RoundRepository roundRepository = new RoundRepository(database.connection);
     public static Round round = new Round();
+    public static int dif;
 
 
 }

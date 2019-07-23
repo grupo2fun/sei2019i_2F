@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game_background"
+    tools:context=".Presentation.adminActivity">
+
+    <LinearLayout
+        android:layout_width="419dp"
+        android:layout_height="819dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="123dp"
+            android:fontFamily="@font/amethysta"
+            android:text="Bienvenido Administrador"
+            android:textColor="#FF5252"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/textViewInstruccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añade o quita una categoría"
+            android:textColor="#F44336"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="367dp"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:hint="CATEGORIA"
+            android:inputType="textPersonName"
+            android:textColorHint="#F44336" />
+
+        <LinearLayout
+            android:layout_width="384dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_background"
+                android:text="Añadir"
+                android:textColor="#3CA340"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/removeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_background"
+                android:text="Quitar"
+                android:textColor="#DD3434"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewAdmin"
+            android:layout_width="340dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Categorías"
+            android:textColor="#F44336"
+            android:textSize="30sp" />
+
+        <ListView
+            android:id="@+id/listViewObject"
+            android:layout_width="375dp"
+            android:layout_height="361dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp">
+
+        </ListView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

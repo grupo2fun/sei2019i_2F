@@ -22,7 +22,7 @@ public class Database extends Application {
 >>>>>>> 7b90f1a0c8bab36fc256c46c114da14164a80be6
 =======
 
-    private static final String HOST = "jdbc:mysql://192.168.0.10:3306/";        //Direccion ip de la base
+    private static final String HOST = "jdbc:mysql://10.203.149.60:3306/";        //Direccion ip de la base
 
 >>>>>>> develop
     private static final String DB_NAME = "db_hangman";

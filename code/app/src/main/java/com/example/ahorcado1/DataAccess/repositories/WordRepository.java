@@ -104,4 +104,18 @@ public class WordRepository {
         }
         return words;
     }
+
+    public List<Word> getAllWords(){
+        List<Word> words = new LinkedList<>();
+
+        try{
+            words = wordDao.query(wordDao.queryBuilder().prepare());
+            return words;
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return words;
+    }
+
 }

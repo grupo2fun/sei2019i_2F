@@ -42,6 +42,7 @@ public class roundActivity extends AppCompatActivity {
     ImageView hang;
     boolean[] mask = new boolean[0];
     LinkedList<Character> usedLetters = new LinkedList<>();
+    gameController gameCont = new gameController();
     //Stack<Character> usedLetters = new Stack<>();
 
     @Override
@@ -60,15 +61,23 @@ public class roundActivity extends AppCompatActivity {
 
         //Palabra a jugar proveniente de la categoria
         wordController wordCont = new wordController();
-        List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, 1); //Categoría y dificultad
-        int randomWordOfList = 0;
-        final String word = listOfWords.get(0).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
+        List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, Globals.dif); //Categoría y dificultad
+        int randomWordOfList = gameCont.randomNumber(listOfWords.size() - 1);
+        final String word = listOfWords.get(randomWordOfList).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
 
 
         palabra = findViewById(R.id.Palabra);
-        palabra.setText("_ _ _ _ _ _ _ _ _");
+        //palabra.setText("_ _ _ _ _ _ _ _ _");
         Tscore.setText(Integer.toString(score));
         final char[] wordc = word.toCharArray();
+        //muestra los espacios al inicio de la actividad
+        final char beginword[]=new char[wordc.length];
+        Arrays.fill(beginword,'_');
+        StringBuilder bpalabra = new StringBuilder(beginword.length);
+        for (char c : beginword) {
+            bpalabra.append(c).append(" ");
+        }
+        palabra.setText(bpalabra);
         final boolean[] maskTrue = new boolean[wordc.length];
         Arrays.fill(maskTrue, true);
         mask = new boolean[wordc.length];
@@ -79,8 +88,10 @@ public class roundActivity extends AppCompatActivity {
         /*Toast limite de pistas */
         Context context = getApplicationContext();
         CharSequence texth = "Solo 1 pista por palabra";
+        CharSequence textv = "ya se adivino la palabra";
         CharSequence textd = "ya no tiene mas vidas";
         CharSequence textr = "letra ya usada";
+
         int duration = Toast.LENGTH_SHORT;
         final Toast toastHint = Toast.makeText(context, texth, duration);
         final Toast toastD = Toast.makeText(context, textd, duration);
@@ -99,21 +110,21 @@ public class roundActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (lives <= 0) {
                     //Se sale a otra actividad que resume y crea y guarda la ronda
-                    gameController gameCont = new gameController();
+
                     gameCont.createRound(Globals.user,Globals.category, (long)score);
-                    //Instancia de otra aactividad INTENT.... ETC
+                    //Instancia de otra actividad INTENT.... ETC
 
                     toastD.show();
                     lossAlert(score);
                 } else if (areAllTrue(mask)) {
                     //Se sale a otra actividad que resume y crea y guarda la ronda
-                    gameController gameCont = new gameController();
+
                     gameCont.createRound(Globals.user,Globals.category, (long)score);
-                    //Instancia de otra aactividad INTENT.... ETC
+                    //Instancia de otra actividad INTENT.... ETC
 
                     WinAlert(score);
                 } else {
-                    char letra = Tletra.getText().toString().charAt(0);
+                    char letra = Tletra.getText().toString().toLowerCase().charAt(0);
                     //Si ya se uso ese caracter, siempre mostrará el mensaje y no se podrá continuar.
                     //Sino, continua el juego.
                     if (usedLetters.contains(letra)) {
@@ -147,11 +158,15 @@ public class roundActivity extends AppCompatActivity {
                         Tscore.setText(Integer.toString(score));
                     }
                 }
-                /*
+
                 if (areAllTrue(mask)) {
+                    //Se sale a otra actividad que resume y crea y guarda la ronda
+                    gameCont.createRound(Globals.user,Globals.category, (long)score);
+                    //Instancia de otra aactividad INTENT.... ETC
                     WinAlert(score);
+
                 }
-                */
+
             }
 
         });
@@ -198,7 +213,7 @@ public class roundActivity extends AppCompatActivity {
         bback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                Intent i = new Intent(roundActivity.this, categoryActivity.class);
                 startActivity(i);
             }
         });
@@ -244,7 +259,7 @@ public class roundActivity extends AppCompatActivity {
                 .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                        Intent i = new Intent(roundActivity.this, categoryActivity.class);
                         startActivity(i);
                         //dialog.dismiss();
                     }
@@ -263,7 +278,7 @@ public class roundActivity extends AppCompatActivity {
                 .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                        Intent i = new Intent(roundActivity.this, categoryActivity.class);
                         startActivity(i);
                         //dialog.dismiss();
                     }

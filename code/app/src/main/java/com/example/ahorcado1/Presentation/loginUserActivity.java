@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ahorcado1.BusinessLogic.controllers.Globals;
+import com.example.ahorcado1.BusinessLogic.controllers.gameController;
 import com.example.ahorcado1.BusinessLogic.controllers.loginController;
 import com.example.ahorcado1.DataAccess.database.Database;
+import com.example.ahorcado1.DataAccess.models.Category;
+import com.example.ahorcado1.DataAccess.models.User;
 import com.example.ahorcado1.DataAccess.repositories.UserRepository;
 import com.example.ahorcado1.R;
 
@@ -19,12 +22,12 @@ public class loginUserActivity extends AppCompatActivity {
     EditText e1,e2;
     Button be,br;
 
-    //Datos de usuario
-    String user;
-    String password;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
         //For network connections in main thread
@@ -48,13 +51,18 @@ public class loginUserActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //Si el id del usuario es diferente de -1
-                user = e1.getText().toString();
-                password = e2.getText().toString();
-                if( loginController1.loginUser( user, password ).getId() != -1 )
+
+                User user = loginController1.loginUser( e1.getText().toString(),e2.getText().toString() );
+                if(user.getId() != -1 )
                 {
-                    //Instancia global de User
-                    Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
-                    startActivity(i);
+                    if (user.getAdminOrUser()){
+                        Intent i = new Intent(loginUserActivity.this, adminActivity.class);
+                        startActivity(i);
+                    } else {
+                        Intent i = new Intent(loginUserActivity.this, categoryActivity.class);
+                        startActivity(i);
+                    }
+
                 }else {
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
                 }
@@ -69,6 +77,7 @@ public class loginUserActivity extends AppCompatActivity {
             {
                 //Intent i =new Intent(loginUserActivity.this,registerUserActivity.class);
                 Intent i =new Intent(loginUserActivity.this, registerUserActivity.class);
+
                 startActivity(i);
             }
         });
