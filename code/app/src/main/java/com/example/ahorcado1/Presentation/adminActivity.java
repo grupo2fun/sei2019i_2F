@@ -1,6 +1,7 @@
 package com.example.ahorcado1.Presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ahorcado1.BusinessLogic.controllers.Globals;
 import com.example.ahorcado1.BusinessLogic.controllers.categoryController;
 import com.example.ahorcado1.DataAccess.models.Category;
 import com.example.ahorcado1.R;
@@ -27,11 +29,14 @@ public class adminActivity extends AppCompatActivity {
 
 
     private Button buttonAdd;
+    private Button buttonRemove;
     private ListView list;
-    private List<String> listaString;
+    //private List<String> listaString;
     private List<String> listaCategorias;
+    List<Category> categories;
     private EditText etext;
     private TextView textView;
+    private TextView textInstruccion;
     private ArrayAdapter<String> stringAdapter;
     private categoryController cc;
 
@@ -41,11 +46,13 @@ public class adminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        //Botón
+        //Botones
         buttonAdd = (Button) findViewById(R.id.addButton);
+        buttonRemove = (Button) findViewById(R.id.removeButton);
 
         //textView
         textView = (TextView) findViewById(R.id.textViewAdmin);
+        textInstruccion = (TextView) findViewById(R.id.textViewInstruccion);
 
         //CODIGO PARA AÑADIR
         //Instancia de botones
@@ -60,15 +67,10 @@ public class adminActivity extends AppCompatActivity {
 
         //Controller
         cc = new categoryController();
-        List<Category> categories = cc.getAllCategories(); //Objetos de tipo categoria
-        //Obtener los nombres de las categorias
-        listaCategorias = new ArrayList<>(); //Nombres de categorias
-        for(int i = 0; i < categories.size(); i++)
-        {
-            String nombre = categories.get(i).getName();
-            listaCategorias.add(nombre);
-        }
+        categories = cc.getAllCategories(); //Objetos de tipo categoria
 
+        //Obtener los nombres de las categorias (Optimizar)
+        listaCategorias = getCategoryNames(categories); //Nombres de categorias
 
 
         //stringAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, listaString);
@@ -83,24 +85,72 @@ public class adminActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0)
                 {
-                    Toast.makeText(adminActivity.this,"SELECCIONÓ LA POSICIÓN 0 de la lista!", Toast.LENGTH_SHORT).show();
+                }
+                Globals.category = cc.getCategoryByName(listaCategorias.get(position));
+                Toast.makeText(adminActivity.this,"Seleccionó la categoría: " + Globals.category.getName() , Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(adminActivity.this, wordsAdminActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+        /*ACCIONES*/
+        //Acción Botón añadir
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombreCategoria = etext.getText().toString();
+                Boolean added = cc.createCategory(nombreCategoria);
+                if(added)
+                {
+                    categories = cc.getAllCategories(); //Actualizar de la base de datos
+                    listaCategorias = getCategoryNames(categories);
+                    adapter1.notifyDataSetChanged();
+                    Toast.makeText(adminActivity.this,"Se ha añadido la categoría exitosamente", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(adminActivity.this, adminActivity.class);
+                    startActivity(i);
+                }else
+                {
+                    Toast.makeText(adminActivity.this,"No se efectuó la operación", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        //Acción Botón quitar
+        buttonRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombreCategoria = etext.getText().toString();
+                String[] categorias ={nombreCategoria};  //Optimizar con el controller para poder borrar de una sola categoría
+                boolean removed = cc.deleteCategories(categorias);
+                if(removed)
+                {
+                    categories = cc.getAllCategories(); //Actualizar de la base de datos
+                    listaCategorias = getCategoryNames(categories);
+                    adapter1.notifyDataSetChanged();
+                    Toast.makeText(adminActivity.this,"Se ha elimininado la categoría exitosamente", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(adminActivity.this, adminActivity.class);
+                    startActivity(i);
+                }else
+                {
+                    Toast.makeText(adminActivity.this,"No se efectuó la operación.\nLa categoría no existe o está escrita incorrectamente", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
+    }
 
-
-        //Botón añadir
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listaCategorias.add(etext.getText().toString());
-                adapter1.notifyDataSetChanged();
-            }
-        });
-
-
+    public static List<String> getCategoryNames(List<Category> categoryList)
+    {
+        List<String> nombres = new ArrayList<>(); //Nombres de categorias
+        for(int i = 0; i < categoryList.size(); i++)
+        {
+            String nombre = categoryList.get(i).getName();
+            nombres.add(nombre);
+        }
+        return nombres;
 
     }
 

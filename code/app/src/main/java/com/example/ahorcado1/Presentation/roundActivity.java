@@ -213,7 +213,7 @@ public class roundActivity extends AppCompatActivity {
         bback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                Intent i = new Intent(roundActivity.this, categoryActivity.class);
                 startActivity(i);
             }
         });
@@ -259,7 +259,7 @@ public class roundActivity extends AppCompatActivity {
                 .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                        Intent i = new Intent(roundActivity.this, categoryActivity.class);
                         startActivity(i);
                         //dialog.dismiss();
                     }
@@ -278,7 +278,7 @@ public class roundActivity extends AppCompatActivity {
                 .setPositiveButton("Siguiente", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(roundActivity.this, loginUserActivity.class);
+                        Intent i = new Intent(roundActivity.this, categoryActivity.class);
                         startActivity(i);
                         //dialog.dismiss();
                     }

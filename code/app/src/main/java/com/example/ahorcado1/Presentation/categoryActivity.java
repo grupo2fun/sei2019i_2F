@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ahorcado1.BusinessLogic.controllers.Globals;
@@ -25,6 +26,7 @@ public class categoryActivity extends AppCompatActivity {
     Button btn;
     categoryController cc = new categoryController();
     wordController wc = new  wordController();
+    TextView t1,t2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,11 @@ public class categoryActivity extends AppCompatActivity {
         spn1 = (Spinner) findViewById(R.id.spnCat);
         spn2 = (Spinner) findViewById(R.id.spnDif);
         btn = (Button) findViewById(R.id.btnPlay);
+        t1 = (TextView) findViewById(R.id.textName);
+        t2 = (TextView) findViewById(R.id.textPuntaje);
+
+        t1.setText(Globals.user.getUsername());
+        t2.setText(String.valueOf(Globals.user.getScoreAccum()));
 
         List<String> lista1 = new LinkedList<>();
         List<Category> lc = cc.getAllCategories();

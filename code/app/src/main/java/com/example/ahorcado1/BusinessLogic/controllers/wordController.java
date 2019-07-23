@@ -23,4 +23,10 @@ public class wordController {
     public boolean deleteWords(String[] words){
         return Globals.wordRepository.deleteWords(words);
     }
+
+    public List<Word> getAllWords()
+    {
+        return Globals.wordRepository.getAllWords();
+    }
+
 }
