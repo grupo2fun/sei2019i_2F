@@ -61,7 +61,7 @@ public class roundActivity extends AppCompatActivity {
 
         //Palabra a jugar proveniente de la categoria
         wordController wordCont = new wordController();
-        List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, 1); //Categoría y dificultad
+        List<Word> listOfWords = wordCont.getWordsByCatDif(Globals.category, Globals.dif); //Categoría y dificultad
         int randomWordOfList = gameCont.randomNumber(listOfWords.size() - 1);
         final String word = listOfWords.get(randomWordOfList).getWord(); //Por ahora solo puedo obtener la información de categoría pero no de sus palabras
 
@@ -124,7 +124,7 @@ public class roundActivity extends AppCompatActivity {
 
                     WinAlert(score);
                 } else {
-                    char letra = Tletra.getText().toString().charAt(0);
+                    char letra = Tletra.getText().toString().toLowerCase().charAt(0);
                     //Si ya se uso ese caracter, siempre mostrará el mensaje y no se podrá continuar.
                     //Sino, continua el juego.
                     if (usedLetters.contains(letra)) {

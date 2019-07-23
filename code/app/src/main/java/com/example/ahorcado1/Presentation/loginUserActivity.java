@@ -59,7 +59,7 @@ public class loginUserActivity extends AppCompatActivity {
                         Intent i = new Intent(loginUserActivity.this, adminActivity.class);
                         startActivity(i);
                     } else {
-                        Intent i = new Intent(loginUserActivity.this, mainMenuActivity.class);
+                        Intent i = new Intent(loginUserActivity.this, categoryActivity.class);
                         startActivity(i);
                     }
 
